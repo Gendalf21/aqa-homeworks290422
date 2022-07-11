@@ -33,7 +33,7 @@ public class CardOrder {
     }
 
     @AfterEach
-    void teardown() {
+    void tearDown() {
         if (driver != null) {
             driver.quit();
         }

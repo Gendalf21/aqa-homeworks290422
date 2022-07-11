@@ -34,8 +34,9 @@ public class CardOrder {
 
     @AfterEach
     void teardown() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test

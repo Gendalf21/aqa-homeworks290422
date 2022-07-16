@@ -92,4 +92,14 @@ public class CardOrder {
         String text = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", text.trim());
     }
+
+    @Test
+    void tesFailNoCheckbox() {
+        driver.get("http://localhost:9999");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Петров-Семин Олег");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79039100505");
+        driver.findElement(By.cssSelector("[type=button]")).click();
+        String text = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text")).getText();
+        assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", text.trim());
+    }
 }
